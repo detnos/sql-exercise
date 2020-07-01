@@ -17,8 +17,14 @@ services:
         - '3000:3000'
   
     database:
-      image: postgres
+      build: ./database
       restart: always
       environment:
-        POSTGRES_PASSWORD: POSTGRES_PASSWORD
+        - POSTGRES_PASSWORD=password
+        - POSTGRES_USER=admin
+        - POSTGRES_DB=database
+      volumes:
+        - POSTGRES_DATA:/var/lib/postgresql/database
 
+volumes:
+    POSTGRES_DATA:
