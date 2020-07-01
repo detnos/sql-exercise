@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+
+    app:
+      build: .
+      depends_on: 
+        - 'database'
+      environment: 
+        ENV POSTGRES_PORT: 5432 
+        POSTGRES_HOST: database 
+        POSTGRES_USER: postgres 
+        POSTGRES_PASSWORD: password 
+        POSTGRES_DATABASE: postgres 
+        PORT: 3000
+      ports: 
+        - '3000:3000'
+  
+    database:
+      image: postgres
+      restart: always
+      environment:
+        POSTGRES_PASSWORD: POSTGRES_PASSWORD
+

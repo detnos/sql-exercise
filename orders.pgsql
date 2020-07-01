@@ -33,6 +33,7 @@ CREATE TABLE public.customers (
 );
 
 
+
 ALTER TABLE public.customers OWNER TO me;
 
 --
